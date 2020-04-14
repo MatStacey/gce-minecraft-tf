@@ -16,6 +16,7 @@ variable "name" {
 variable "minecraft_server_port" {
   default = ""
 }
+
 variable "tags" {
   type = list(string)
   default = [

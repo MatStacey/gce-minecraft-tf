@@ -1,10 +1,10 @@
-
 resource "google_compute_network" "network" {
   name = join("-", [
     var.name,
     "internal-private-vpc"])
   auto_create_subnetworks = false
 }
+
 resource "google_compute_subnetwork" "subnet" {
   name = join("-", [
     var.name,
@@ -37,15 +37,14 @@ resource "google_compute_firewall" "minecraft" {
   target_tags = var.tags
 }
 
-output "target_tags" {
-  value = google_compute_firewall.minecraft.target_tags
-  description = "The private IP address of the main server instance."
-}
-
-# Permenant IP address, stays around when VM is off
 resource "google_compute_address" "minecraft" {
   name = "minecraft-static-ip"
   region = var.region
+}
+
+output "target_tags" {
+  value = google_compute_firewall.minecraft.target_tags
+  description = "The private IP address of the main server instance."
 }
 
 output "vm_ip_address" {

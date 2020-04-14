@@ -5,7 +5,6 @@ resource "google_compute_disk" "minecraft" {
   type = var.disk_type
   zone = var.zone
   image = var.image
-  #"cos-cloud/cos-stable"
 }
 
 # VM to run Minecraft, we use preemptable which will shutdown within 24 hours
@@ -17,7 +16,6 @@ resource "google_compute_instance" "minecraft" {
   machine_type = var.machine_type
   zone = var.zone
   tags = var.tags
-  #google_compute_firewall.minecraft.target_tags[0]
 
   # Run itzg/minecraft-server docker image on startup
   # The instructions of https://hub.docker.com/r/itzg/minecraft-server/ are applicable
@@ -49,7 +47,6 @@ resource "google_compute_instance" "minecraft" {
 
   scheduling {
     preemptible = var.preemptible
-    # Closes within 24 hours (sometimes sooner)
     automatic_restart = var.auto_restart
   }
 }

@@ -44,7 +44,7 @@ module "iam" {
 
 module "network" {
   source = "./network/"
-  minecraft_server_port = 25565
+  minecraft_server_port = var.minecraft_port
   project_id = var.project_id
   region = var.region
   name = var.network_name

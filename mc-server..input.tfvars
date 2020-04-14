@@ -1,5 +1,5 @@
 #Project
-project_id = "gcp-personal-playpit"
+project_id = "YOUR PROJECT ID"
 region = "europe-west2"
 zone = "europe-west2-b"
 

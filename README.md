@@ -11,6 +11,8 @@ It is recommended you set your GOOGLE_APPLICATION_CREDENTIALS to your SA Private
 
 `export GOOGLE_APPLICATION_CREDENTIALS=${PATH_TO_KEY}`
 
+* Before executing a Plan you must populate the `${PROJECT_ID}` and `${BASE_IMAGE}` vars in `./example.input.tfvars`
+
 # Preferences
 Can be modified in the `./example.input.tfvars`
 

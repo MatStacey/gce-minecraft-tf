@@ -7,15 +7,19 @@ A simple GCE hosted minecraft server on a private VPC using modules.
 * A GCS bucket named 'minecraft-tfstate' to manage terraform state
 * You are executing terraform from an account with permissions to create networks and GCE instances.
 
+It is recommended you set your GOOGLE_APPLICATION_CREDENTIALS to your SA Private Key:
+
+`export GOOGLE_APPLICATION_CREDENTIALS=${PATH_TO_KEY}`
+
 # Preferences
-Can be modified in the `./mc-server.input.tfvars`
+Can be modified in the `./example.input.tfvars`
 
 # Plan
 Run a plan using the following command from the root directory of this repo:
-`terraform plan --var-file=./mc-server.input.tfvars`
+`terraform plan --var-file=./example.input.tfvars`
 
 Check your plan...
 
 # Apply 
-`terraform plan --var-file=./mc-server.input.tfvars`
+`terraform plan --var-file=./example.input.tfvars`
 

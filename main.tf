@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
-    prefix = "minecraft"
-    bucket = "minecraft-tfstate"
+    prefix = "gce-pattern-1"
+    bucket = "tf-state-admin"
   }
 }
 

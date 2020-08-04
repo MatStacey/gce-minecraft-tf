@@ -1,4 +1,11 @@
-A simple GCE hosted minecraft server on a private VPC using modules.
+#Simple Terraform GCE Pattern
+
+A Google Compute engine GCE instance with the following modules:
+
+1. Creates Internal VPC with subnet `./network`
+2. Creates firewall rules on VPC for allow-ingress for SSH and 1 specified ingress port `./network`
+3. Creates Service Account with VPC User access `./iam`
+4. Creates GCE Compute Instances inside created VPC, with attached service Account based on an image specified by user `./gce`
 
 # Pre-requisites:
 
@@ -16,15 +23,16 @@ It is recommended you set your GOOGLE_APPLICATION_CREDENTIALS to your SA Private
 
 * Before executing a Plan you must populate the `${PROJECT_ID}` and `${BASE_IMAGE}` vars in `./example.input.tfvars`
 
-# Preferences
-Can be modified in the `./example.input.tfvars`
+# Running the Example
 
-# Plan
+All variables can be modified in the `./example.input.tfvars` or separately create a new `input.tfvars` for your own variables.
+
+## Plan
 Run a plan using the following command from the root directory of this repo:
 `terraform plan --var-file=./example.input.tfvars`
 
 Check your plan...
 
-# Apply 
+## Apply 
 `terraform plan --var-file=./example.input.tfvars`
 

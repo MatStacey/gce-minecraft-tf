@@ -1,7 +1,7 @@
 terraform {
   backend "gcs" {
     prefix = "gce-pattern-1"
-    bucket = "tf-state-admin"
+    bucket = "gce-pattern-tf-state-admin"
   }
 }
 

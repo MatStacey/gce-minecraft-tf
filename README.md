@@ -4,7 +4,8 @@ A simple GCE hosted minecraft server on a private VPC using modules.
 
 * terraform v0.12 [https://www.terraform.io/downloads.html](https://www.terraform.io/downloads.html)
 * A Google cloud project with billing enabled
-* An existing GCS bucket named 'tf-state-admin' must exist in your project to manage terraform state remotely. 
+* An existing GCS bucket named must exist in your project to manage terraform state remotely. 
+    - By default it is named `gce-pattern-tf-state-admin` however you may wish to change this in `./main.tf`
     - If you wish to keep your state local you can remove the "backend" block from `./main.tf`
 
 * You are executing terraform from an account with permissions to create networks and GCE instances.

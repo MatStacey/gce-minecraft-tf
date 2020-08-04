@@ -14,17 +14,17 @@ resource "google_compute_subnetwork" "subnet" {
   network = google_compute_network.network.self_link
 }
 
-resource "google_compute_firewall" "minecraft" {
+resource "google_compute_firewall" "ingress_rule" {
   name = join("-", [
     var.name,
-    "ingress-mc-ssh"])
+    "ingress-ssh"])
   network = google_compute_network.network.self_link
   direction = "INGRESS"
   priority = 3000
   allow {
     protocol = "tcp"
     ports = [
-      var.minecraft_server_port]
+      var.inbound_port]
   }
   allow {
     protocol = "tcp"
@@ -42,8 +42,9 @@ resource "google_compute_address" "minecraft" {
   region = var.region
 }
 
+#Some outputs which can be used by other modules (eg GCE)
 output "target_tags" {
-  value = google_compute_firewall.minecraft.target_tags
+  value = google_compute_firewall.ingress_rule.target_tags
   description = "The private IP address of the main server instance."
 }
 

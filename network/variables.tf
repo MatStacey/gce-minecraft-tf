@@ -13,7 +13,7 @@ variable "name" {
   default = ""
 }
 
-variable "minecraft_server_port" {
+variable "inbound_port" {
   default = ""
 }
 

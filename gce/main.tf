@@ -1,14 +1,15 @@
-resource "google_compute_disk" "minecraft" {
+resource "google_compute_disk" "standard-disk" {
   name = join("-", [
     var.name,
     "disk"])
   type = var.disk_type
   zone = var.zone
-  image = var.image
+  image = var.image #base image
 }
 
-# VM to run Minecraft, we use preemptable which will shutdown within 24 hours
-resource "google_compute_instance" "minecraft" {
+# Compute engine instance
+# Accepts startup script (upload to gcs manually or add a gcs module here)
+resource "google_compute_instance" "instance" {
   name = join("-", [
     "gce",
     var.name,
@@ -17,19 +18,13 @@ resource "google_compute_instance" "minecraft" {
   zone = var.zone
   tags = var.tags
 
-  # Run itzg/minecraft-server docker image on startup
-  # The instructions of https://hub.docker.com/r/itzg/minecraft-server/ are applicable
-  # For instance, Ssh into the instance and you can run
-  #  docker logs mc
-  #  docker exec -i mc rcon-cli
-  # Once in rcon-cli you can "op <player_id>" to make someone an operator (admin)
-  # Use 'sudo journalctl -u google-startup-scripts.service' to retrieve the startup script output
-  metadata_startup_script = format("docker run -d -p %d:%d -e EULA=TRUE -v /var/minecraft:/data --name mc --rm=true itzg/minecraft-server:latest;", var.minecraft_port, var.minecraft_port)
+  #
+  metadata_startup_script = var.startup_script
 
   boot_disk {
     auto_delete = var.auto_delete_disk
     # Keep disk after shutdown (game data)
-    source = google_compute_disk.minecraft.self_link
+    source = google_compute_disk.standard-disk.self_link
   }
 
   network_interface {
@@ -46,7 +41,7 @@ resource "google_compute_instance" "minecraft" {
   }
 
   scheduling {
-    preemptible = var.preemptible
+    preemptible = var.preemptible #may terminate at any stage.
     automatic_restart = var.auto_restart
   }
 }

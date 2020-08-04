@@ -8,17 +8,17 @@ variable "zone" {
   default = "europe-west2-b"
 }
 variable "tags" {
-  default = "minecraft"
+  default = ""
 }
 variable "auto_delete_disk" {
   type = bool
   default = false
 }
-variable "minecraft_disk" {
-  default = "minecraft-psd"
+variable "disk_name" {
+  default = ""
 }
 variable "network_name" {
-  default = "vcp-subnet-private-europe-west2"
+  default = ""
 }
 variable "sa_email" {
   default = ""
@@ -34,9 +34,6 @@ variable "auto_restart" {
   type = bool
   default = false
 }
-variable "minecraft_port" {
-  default = ""
-}
 variable "disk_type" {
   default = ""
 }
@@ -47,5 +44,8 @@ variable "vm_ip_address" {
   default = ""
 }
 variable "subnetwork_name" {
+  default = ""
+}
+variable "startup_script" {
   default = ""
 }

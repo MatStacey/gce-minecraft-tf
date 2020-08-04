@@ -16,7 +16,7 @@ module "iam" {
 
 module "network" {
   source = "./network/"
-  minecraft_server_port = var.minecraft_port
+  inbound_port = var.inbound_port
   project_id = var.project_id
   region = var.region
   name = var.network_name
@@ -29,10 +29,9 @@ module "gce" {
   source = "./gce/"
   machine_type = var.machine_type
   zone = var.zone
-  minecraft_port = var.minecraft_port
+  inbound_port = var.inbound_port
   tags = module.network.target_tags
   auto_delete_disk = var.auto_delete_disk
-  minecraft_disk = var.minecraft_disk
   network_name = module.network.network_name
   subnetwork_name = module.network.subnetwork_name
   vm_ip_address = module.network.vm_ip_address

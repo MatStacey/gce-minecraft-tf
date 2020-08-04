@@ -6,7 +6,7 @@ variable "machine_type" {
   default = ""
 }
 
-variable "minecraft_port" {
+variable "inbound_port" {
   default = ""
 }
 
@@ -40,8 +40,7 @@ variable "auto_restart" {
 
 variable "tags" {
   type = list(string)
-  default = [
-    "minecraft"]
+  default = []
 }
 
 # Permenant IP address, stays around when VM is off
@@ -49,8 +48,8 @@ variable "ip_address_name" {
   default = ""
 }
 
-variable "minecraft_disk" {
-  default = "minecraft-pd"
+variable "disk_name" {
+  default = ""
 }
 
 variable "name" {

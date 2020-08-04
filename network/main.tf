@@ -37,8 +37,8 @@ resource "google_compute_firewall" "ingress_rule" {
   target_tags = var.tags
 }
 
-resource "google_compute_address" "minecraft" {
-  name = "minecraft-static-ip"
+resource "google_compute_address" "gce_address" {
+  name = format("%s-ip-address", var.name)
   region = var.region
 }
 
@@ -49,7 +49,7 @@ output "target_tags" {
 }
 
 output "vm_ip_address" {
-  value = google_compute_address.minecraft.address
+  value = google_compute_address.gce_address.address
 }
 output "network_name" {
   value = google_compute_network.network.name

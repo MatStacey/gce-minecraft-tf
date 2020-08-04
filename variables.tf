@@ -11,7 +11,7 @@ variable "inbound_port" {
 }
 
 variable "auto_delete_disk" {
-  type = bool
+  type    = bool
   default = false
 }
 
@@ -25,21 +25,21 @@ variable "disk_type" {
 
 variable "scopes" {
   default = [
-    "userinfo-email"]
+  "userinfo-email"]
 }
 
 variable "preemptible" {
-  type = bool
+  type    = bool
   default = true
 }
 
 variable "auto_restart" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "tags" {
-  type = list(string)
+  type    = list(string)
   default = []
 }
 

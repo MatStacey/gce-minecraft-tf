@@ -1,5 +1,5 @@
 #Project
-project_id = "${YOUR PROJECT ID}"
+project_id = "gcp-personal-playpit"
 region = "europe-west2"
 zone = "europe-west2-b"
 
@@ -7,7 +7,7 @@ zone = "europe-west2-b"
 machine_type = "n1-standard-1"
 auto_delete_disk = false
 disk_type = "pd-standard"
-image = "${BASE_IMAGE}" #BASE IMAGE (use url from gce images)
+image = "ubuntu-1604-lts" #BASE IMAGE
 
 #Network
 network_name = "gce-vpc-network"
